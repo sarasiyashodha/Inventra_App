@@ -4,20 +4,35 @@ import '../models/user_model.dart';
 
 class ApiService {
   static Future<UserModel> loginUser(String username, String password) async {
-    var response = await http.put(
-      Uri.parse('http://app360dev-001-site14.atempurl.com/api/v2/Auth/SignIn'),
-      headers: {'Content-Type': 'application/json'},
-      body: jsonEncode({
-        'userName': username,
-        'password': password,
-      }),
-    );
+    // var response = await http.put(
+    //   Uri.parse('http://app360dev-001-site14.atempurl.com/api/v2/Auth/SignIn'),
+    //   headers: {'Content-Type': 'application/json'},
+    //   body: jsonEncode({
+    //     'userName': username,
+    //     'password': password,
+    //   }),
+    // );
+    //
+    // if (response.statusCode == 200) {
+    //   var jsonResponse = json.decode(response.body);
+    //   return UserModel.fromJson(jsonResponse);
+    // } else {
+    //   throw Exception('Failed to load user data');
+    // }
+    try {
+      var request = http.Request('PUT', Uri.parse('http://app360dev-001-site14.atempurl.com/api/v2/Auth/SignIn'));
+      request.body = '''{\r\n  "userName": "sarasi",\r\n  "password": "123"\r\n}''';
 
-    if (response.statusCode == 200) {
-      var jsonResponse = json.decode(response.body);
-      return UserModel.fromJson(jsonResponse);
-    } else {
-      throw Exception('Failed to load user data');
+      http.StreamedResponse response = await request.send();
+
+      if (response.statusCode == 200) {
+        var jsonResponse = json.decode(await response.stream.bytesToString());
+        return UserModel.fromJson(jsonResponse);
+      } else {
+        throw Exception('Failed to log in: ${response.reasonPhrase}');
+      }
+    } catch (e) {
+      throw Exception('Failed to log in: $e');
     }
   }
 }
