@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:inventra_app/components/bottom_line.dart';
+import 'package:inventra_app/constants.dart';
 import 'package:inventra_app/screens/route_page.dart';
 import '../components/my_text_field.dart';
 import '../models/user_model.dart';
@@ -11,6 +12,7 @@ class SignInPage extends StatefulWidget {
 }
 
 class _SignInPageState extends State<SignInPage> {
+  final String apiKey = 'jffWqnjWtdqRZzvpcNaUvvpHjFgYXnkLeBQNZzUJJBRWrmKkebDJqHGPDRHwajqxjNUvwhLQfYEFRjYCJBjfjWDWzjGdNrSWtMPyjjyUhZfpQjeevMUqgTEUWYDytAcumfQFPCFamwVXDfbVjkTXuUnLfQcAgyTyvRQPhZSQvGLxVpetPAeWriHEWtyvDKeZKJQDvfzx';
   final _formKey = GlobalKey<FormState>();
   String username = "";
   String password = "";
@@ -24,7 +26,7 @@ class _SignInPageState extends State<SignInPage> {
     String password = passwordController.text;
 
     try {
-      UserModel user = await ApiService.loginUser(username, password);
+      UserModel user = await ApiService.loginUser(username, password, apiKey);
       Navigator.push(
         context,
         MaterialPageRoute(
@@ -55,11 +57,11 @@ class _SignInPageState extends State<SignInPage> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               SizedBox(
-                height: 30.0,
+                height: 47.0,
               ),
               Image(image: AssetImage('images/name.png'), width: 205.0, height: 52.0, alignment: Alignment.topLeft),
               Text('Sign in to your account',
-                style: TextStyle(fontFamily: 'Roboto', fontWeight: FontWeight.w400, color: Color(0XFF979797), fontSize: 16.0),
+                style: ksubTitleTextStyle,
               ),
               SizedBox(
                 height: 50.0,
@@ -97,6 +99,7 @@ class _SignInPageState extends State<SignInPage> {
               SizedBox(height: 30.0,),
               GestureDetector(
                 onTap: () => _login(context),
+
                 child: Container(
                   padding: const EdgeInsets.all(25.0),
                   decoration: BoxDecoration(
@@ -117,7 +120,7 @@ class _SignInPageState extends State<SignInPage> {
                 ),
               ),
              SizedBox(
-               height: 292.0,
+               height: 275.0,
              ),
              BottomLine(),
             ],

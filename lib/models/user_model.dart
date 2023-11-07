@@ -13,10 +13,11 @@ class UserModel {
 
   factory UserModel.fromJson(Map<String, dynamic> json) {
     return UserModel(
-      userName: json['content']['userDetails']['userName'],
-      name: json['content']['userDetails']['name'],
-      password: json['content']['userDetails']['password'],
-      routes: List<Map<String, dynamic>>.from(json['content']['routes']),
+      userName: json['content']['userDetails']['userName'] ?? '', // Handle null with default value ''
+      name: json['content']['userDetails']['name'] ?? '', // Handle null with default value ''
+      password: json['content']['userDetails']['password'] ?? '', // Handle null with default value ''
+      routes: List<Map<String, dynamic>>.from(json['content']['routes'] ?? []
+      ),
     );
   }
 }
