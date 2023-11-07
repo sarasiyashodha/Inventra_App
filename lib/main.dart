@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:inventra_app/screens/signin_page.dart';
 import 'package:inventra_app/screens/splash_screen.dart';
 
 void main() {
@@ -14,10 +15,11 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.grey),
         useMaterial3: true,
       ),
-      home: const SplashScreen(),
+      // home: SplashScreen(),
+      home: SignInPage(),
     );
   }
 }
