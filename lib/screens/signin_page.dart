@@ -25,19 +25,27 @@ class _SignInPageState extends State<SignInPage> {
     String username = usernameController.text;
     String password = passwordController.text;
 
-    try {
-      UserModel user = await ApiService.loginUser(username, password, apiKey);
-      Navigator.push(
-        context,
-        MaterialPageRoute(
-          builder: (context) => RoutePage(user: user),
-        ),
-      );
-    } catch (e) {
-      // Handle login failure (show error message, etc.)
-      print('Login failed: $e');
+    if (username == 'sarasi' && password == '123') {
+      try {
+        UserModel user = await ApiService.loginUser(username, password, apiKey);
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => RoutePage(user: user),
+          ),
+        );
+      } catch (e) {
+        setState(() {
+          error = "Failed to log in. Please try again."; // Update error message
+        });
+      }
+    } else {
+      setState(() {
+        error = "Invalid username or password"; // Update error message
+      });
     }
   }
+
 
   @override
   Widget build(BuildContext context) {
@@ -80,25 +88,39 @@ class _SignInPageState extends State<SignInPage> {
                     child: Column(
                       children: [
                         MyTextField(
+                          validator: (val) =>
+                            val?.isEmpty == true ? "Enter a valid Email" : null,
                           controller: usernameController,
                           hintText: 'Username',
                           obscureText: false,
                           icon: Icons.person,
                           onChanged: (val) {
+                            setState(() {
+                              username = val;
+                            });
+
                           },
                         ),
                         const SizedBox(height: 44.0),
                         MyTextField(
+                          validator: (val) =>
+                          val?.isEmpty == true ? "Enter a valid password" : null,
                           controller: passwordController,
                           hintText: 'Password',
                           obscureText: true,
                           icon: Icons.lock,
                           onChanged: (val) {
-
+                            setState(() {
+                              password = val;
+                            });
                           },
                         ),
                       ],
                     ),
+                  ),
+                  Text(
+                    error,
+                    style: TextStyle(color: Colors.red),
                   ),
                   SizedBox(height: 22.0,),
                   Text('Forgot password?',

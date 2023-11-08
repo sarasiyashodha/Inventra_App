@@ -5,6 +5,7 @@ class MyTextField extends StatelessWidget {
   final String hintText;
   final bool obscureText;
   final IconData icon;
+  final FormFieldValidator<String>? validator;
   final void Function(String)? onChanged;
 
 
@@ -13,6 +14,7 @@ class MyTextField extends StatelessWidget {
     required this.hintText,
     required this.obscureText,
     required this.icon,
+    required this.validator,
     this.onChanged,
   });
 
@@ -27,19 +29,8 @@ class MyTextField extends StatelessWidget {
         hintText: hintText,
         hintStyle: TextStyle(color: Colors.grey[500], fontFamily: 'Lato', fontWeight: FontWeight.w400, fontSize: 14.0),
         prefixIcon: Icon(icon, color: Color(0XFFD7D7D7), size: 24.0),
-        // suffixIcon: IconButton(
-        //   icon: Icon(passwordVisible
-        //       ? Icons.visibility
-        //       : Icons.visibility_off),
-        //   onPressed: () {
-        //     setState(
-        //           () {
-        //         passwordVisible = !passwordVisible;
-        //       },
-        //     );
-        //   },
-        // ),
       ),
+      validator: validator,
       onChanged: onChanged,
     );
   }

@@ -4,7 +4,6 @@ import '../models/user_model.dart';
 
 class ApiService {
   static Future<UserModel> loginUser(String username, String password, String apiKey) async {
-    if (username == 'sarasi' && password == '123') {
       var response = await http.put(
         Uri.parse('http://app360dev-001-site14.atempurl.com/api/v2/Auth/SignIn'),
         headers: {
@@ -23,9 +22,7 @@ class ApiService {
       } else {
         throw Exception('Failed to load user data');
       }
-    } else {
-      throw Exception('Invalid username or password'); // Handle incorrect credentials
-    }
+
   }
 }
 
