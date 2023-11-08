@@ -44,15 +44,7 @@ class _SignInPageState extends State<SignInPage> {
     return Scaffold(
       body: Padding(
         padding: const EdgeInsets.all(22.0),
-        child: Container(
-          decoration: BoxDecoration(
-            image: DecorationImage(
-              repeat: ImageRepeat.repeat,
-              image: AssetImage(
-                'images/background.png',
-              ),
-            ),
-          ),
+
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -85,9 +77,7 @@ class _SignInPageState extends State<SignInPage> {
                       obscureText: true,
                       icon: Icons.lock,
                       onChanged: (val) {
-                        // setState(() {
-                        //   password = val;
-                        // });
+
                       },
                     ),
                   ],
@@ -125,7 +115,7 @@ class _SignInPageState extends State<SignInPage> {
              BottomLine(),
             ],
           ),
-        ),
+
       ),
     );
   }
