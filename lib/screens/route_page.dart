@@ -56,12 +56,6 @@ class RoutePage extends StatelessWidget {
                           return Container(height: 56.0, width: 327,
                             decoration: BoxDecoration(
                               color: Colors.white,
-                              // boxShadow: [
-                              //   BoxShadow(
-                              //     color: Colors.grey, //New
-                              //     blurRadius: 3.0,
-                              //   )
-                              // ],
                             ),
                             margin: EdgeInsets.only(left: 0.0, right: 0.0, top: 0.0, bottom: 12.0),
                             child: Padding(
