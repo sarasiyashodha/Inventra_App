@@ -8,7 +8,6 @@ class RoutePage extends StatelessWidget {
 
   RoutePage({required this.user});
 
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -38,11 +37,22 @@ class RoutePage extends StatelessWidget {
                     ),
                     Row(
                       children: [
-                        Text('ROUTE ', style: ktitleTextStyle,),
-                        Text('SELECTION', style: TextStyle(fontFamily: 'Lato', fontWeight: FontWeight.w400, color: Color(0XFF212121), fontSize: 25.0)),
+                        Text(
+                          'ROUTE ',
+                          style: ktitleTextStyle,
+                        ),
+                        Text('SELECTION',
+                            style: TextStyle(
+                                fontFamily: 'Lato',
+                                fontWeight: FontWeight.w400,
+                                color: Color(0XFF212121),
+                                fontSize: 25.0)),
                       ],
                     ),
-                    Text('Select the following company, you need to process', style: ksubTitleTextStyle,),
+                    Text(
+                      'Select the following company, you need to process',
+                      style: ksubTitleTextStyle,
+                    ),
                     SizedBox(
                       height: 65.0,
                     ),
@@ -53,15 +63,23 @@ class RoutePage extends StatelessWidget {
                         itemCount: user.routes.length,
                         itemBuilder: (context, index) {
                           String routeName = user.routes[index]['route'];
-                          return Container(height: 56.0, width: 327,
+                          return Container(
+                            height: 56.0,
+                            width: 327,
                             decoration: BoxDecoration(
                               color: Colors.white,
                             ),
-                            margin: EdgeInsets.only(left: 0.0, right: 0.0, top: 0.0, bottom: 12.0),
+                            margin: EdgeInsets.only(
+                                left: 0.0, right: 0.0, top: 0.0, bottom: 12.0),
                             child: Padding(
-                              padding: const EdgeInsets.only(left: 15.0,right: 15.0, top: 0.0, bottom: 0.0),
+                              padding: const EdgeInsets.only(
+                                  left: 15.0,
+                                  right: 15.0,
+                                  top: 0.0,
+                                  bottom: 0.0),
                               child: Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
                                 children: [
                                   Container(
                                     width: 40.0,
@@ -69,12 +87,24 @@ class RoutePage extends StatelessWidget {
                                     decoration: BoxDecoration(
                                       color: Color(0XFFF1F6FF),
                                     ),
-                                    child: Icon(Icons.near_me, color: Color(0XFF18C9CD), size: 20.0,),
+                                    child: Icon(
+                                      Icons.near_me,
+                                      color: Color(0XFF18C9CD),
+                                      size: 20.0,
+                                    ),
                                   ),
-
-                                  Text(routeName, style: krouteTextStyle,),
-                                  SizedBox(width: 50.0,),
-                                  Icon(Icons.arrow_forward_ios, color: Color(0XFF979797), size: 15.0,),
+                                  Text(
+                                    routeName,
+                                    style: krouteTextStyle,
+                                  ),
+                                  SizedBox(
+                                    width: 50.0,
+                                  ),
+                                  Icon(
+                                    Icons.arrow_forward_ios,
+                                    color: Color(0XFF979797),
+                                    size: 15.0,
+                                  ),
                                 ],
                               ),
                             ),
@@ -86,15 +116,10 @@ class RoutePage extends StatelessWidget {
                 ),
               ),
             ),
-
           ),
-          Positioned(
-              top: 765,
-              left: 112,
-              child: BottomLine()),
+          Positioned(top: 765, left: 112, child: BottomLine()),
         ],
       ),
-
     );
   }
 }

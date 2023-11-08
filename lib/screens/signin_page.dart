@@ -12,7 +12,8 @@ class SignInPage extends StatefulWidget {
 }
 
 class _SignInPageState extends State<SignInPage> {
-  final String apiKey = 'jffWqnjWtdqRZzvpcNaUvvpHjFgYXnkLeBQNZzUJJBRWrmKkebDJqHGPDRHwajqxjNUvwhLQfYEFRjYCJBjfjWDWzjGdNrSWtMPyjjyUhZfpQjeevMUqgTEUWYDytAcumfQFPCFamwVXDfbVjkTXuUnLfQcAgyTyvRQPhZSQvGLxVpetPAeWriHEWtyvDKeZKJQDvfzx';
+  final String apiKey =
+      'jffWqnjWtdqRZzvpcNaUvvpHjFgYXnkLeBQNZzUJJBRWrmKkebDJqHGPDRHwajqxjNUvwhLQfYEFRjYCJBjfjWDWzjGdNrSWtMPyjjyUhZfpQjeevMUqgTEUWYDytAcumfQFPCFamwVXDfbVjkTXuUnLfQcAgyTyvRQPhZSQvGLxVpetPAeWriHEWtyvDKeZKJQDvfzx';
   final _formKey = GlobalKey<FormState>();
   String username = "";
   String password = "";
@@ -47,11 +48,9 @@ class _SignInPageState extends State<SignInPage> {
     }
   }
 
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-
       body: Stack(
         children: [
           Positioned(
@@ -70,15 +69,19 @@ class _SignInPageState extends State<SignInPage> {
           Center(
             child: Padding(
               padding: const EdgeInsets.all(22.0),
-
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   SizedBox(
                     height: 47.0,
                   ),
-                  Image(image: AssetImage('images/name.png'), width: 205.0, height: 52.0, alignment: Alignment.topLeft),
-                  Text('Sign in to your account',
+                  Image(
+                      image: AssetImage('images/name.png'),
+                      width: 205.0,
+                      height: 52.0,
+                      alignment: Alignment.topLeft),
+                  Text(
+                    'Sign in to your account',
                     style: ksubTitleTextStyle,
                   ),
                   SizedBox(
@@ -89,8 +92,9 @@ class _SignInPageState extends State<SignInPage> {
                     child: Column(
                       children: [
                         MyTextField(
-                          validator: (val) =>
-                            val?.isEmpty == true ? "Enter a valid Email" : null,
+                          validator: (val) => val?.isEmpty == true
+                              ? "Enter a valid Email"
+                              : null,
                           controller: usernameController,
                           hintText: 'Username',
                           obscureText: false,
@@ -99,19 +103,24 @@ class _SignInPageState extends State<SignInPage> {
                             setState(() {
                               username = val;
                             });
-
                           },
                         ),
                         const SizedBox(height: 44.0),
                         MyTextField(
-                          validator: (val) =>
-                          val?.isEmpty == true ? "Enter a valid password" : null,
+                          validator: (val) => val?.isEmpty == true
+                              ? "Enter a valid password"
+                              : null,
                           controller: passwordController,
                           hintText: 'Password',
                           obscureText: !passwordVisible,
                           icon: Icons.lock,
                           suffixIcon: IconButton(
-                            icon: Icon(passwordVisible ? Icons.visibility : Icons.visibility_off, color: Color(0XFF18C9CD),),
+                            icon: Icon(
+                              passwordVisible
+                                  ? Icons.visibility
+                                  : Icons.visibility_off,
+                              color: Color(0XFF18C9CD),
+                            ),
                             onPressed: () {
                               setState(() {
                                 passwordVisible = !passwordVisible;
@@ -131,13 +140,22 @@ class _SignInPageState extends State<SignInPage> {
                     error,
                     style: TextStyle(color: Colors.red),
                   ),
-                  SizedBox(height: 22.0,),
-                  Text('Forgot password?',
-                    style: TextStyle(fontFamily: 'Lato', fontWeight: FontWeight.w700, color: Color(0XFF1AC9CD), fontSize: 16.0),),
-                  SizedBox(height: 30.0,),
+                  SizedBox(
+                    height: 22.0,
+                  ),
+                  Text(
+                    'Forgot password?',
+                    style: TextStyle(
+                        fontFamily: 'Lato',
+                        fontWeight: FontWeight.w700,
+                        color: Color(0XFF1AC9CD),
+                        fontSize: 16.0),
+                  ),
+                  SizedBox(
+                    height: 30.0,
+                  ),
                   GestureDetector(
                     onTap: () => _login(context),
-
                     child: Container(
                       padding: const EdgeInsets.all(25.0),
                       decoration: BoxDecoration(
@@ -157,17 +175,11 @@ class _SignInPageState extends State<SignInPage> {
                       ),
                     ),
                   ),
-
-
                 ],
               ),
-
             ),
           ),
-          Positioned(
-            top: 765,
-              left: 112,
-              child: BottomLine()),
+          Positioned(top: 765, left: 112, child: BottomLine()),
         ],
       ),
     );
