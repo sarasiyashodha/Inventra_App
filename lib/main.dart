@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:inventra_app/screens/signin_page.dart';
 import 'package:inventra_app/screens/splash_screen.dart';
 
 void main() {
@@ -18,8 +17,8 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.grey),
         useMaterial3: true,
       ),
-      // home: SplashScreen(),
-      home: SignInPage(),
+      home: SplashScreen(),
+
     );
   }
 }
