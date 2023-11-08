@@ -20,6 +20,7 @@ class _SignInPageState extends State<SignInPage> {
 
   final usernameController = TextEditingController();
   final passwordController = TextEditingController();
+  bool passwordVisible = false;
 
   void _login(BuildContext context) async {
     String username = usernameController.text;
@@ -107,8 +108,16 @@ class _SignInPageState extends State<SignInPage> {
                           val?.isEmpty == true ? "Enter a valid password" : null,
                           controller: passwordController,
                           hintText: 'Password',
-                          obscureText: true,
+                          obscureText: !passwordVisible,
                           icon: Icons.lock,
+                          suffixIcon: IconButton(
+                            icon: Icon(passwordVisible ? Icons.visibility : Icons.visibility_off, color: Color(0XFF18C9CD),),
+                            onPressed: () {
+                              setState(() {
+                                passwordVisible = !passwordVisible;
+                              });
+                            },
+                          ),
                           onChanged: (val) {
                             setState(() {
                               password = val;
@@ -132,7 +141,7 @@ class _SignInPageState extends State<SignInPage> {
                     child: Container(
                       padding: const EdgeInsets.all(25.0),
                       decoration: BoxDecoration(
-                        color: Color(0xff18C9CD),
+                        color: Color(0XFF18C9CD),
                         borderRadius: BorderRadius.circular(10),
                       ),
                       child: Center(
